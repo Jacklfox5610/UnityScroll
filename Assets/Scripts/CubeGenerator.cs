@@ -41,8 +41,8 @@ public class CubeGenerator : MonoBehaviour
             int t = Random.Range(1, maxBlockNum + 1);
             for (int i = 0; i < t; i++)
             {
-                Instantiate(prefab);
-                prefab.transform.position = new Vector2(genPosX, this.offsetY+spaceY*i);
+                GameObject go=Instantiate(prefab) as GameObject;
+                go.transform.position = new Vector2(genPosX, this.offsetY+spaceY*i);
 
 
                 
@@ -51,15 +51,5 @@ public class CubeGenerator : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "ground"||collision.gameObject.tag=="block")
-        {
-            GetComponent<AudioSource>().volume = 1;
-        }
-        else
-        {
-            GetComponent<AudioSource>().volume = 0;
-        }
-    }
+
 }
